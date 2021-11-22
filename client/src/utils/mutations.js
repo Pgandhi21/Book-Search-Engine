@@ -53,7 +53,7 @@ export const SAVE_BOOK = gql`
         title
         image
         link
-      
+     } 
   }
 `;
 
@@ -72,5 +72,6 @@ export const REMOVE_BOOK = gql`
           image
           link
         }
-  }
+      }
+    }
 `;

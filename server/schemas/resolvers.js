@@ -5,7 +5,7 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async (parent, { userId }) => {
+    me: async (parent, { userId }) => {
       return User.findOne({ _id: userId });
     },
   },
@@ -19,7 +19,9 @@ const resolvers = {
     },
 
     login: async (parent, { body }) => {
-      const user = await User.findOne({ $or: [{ username: body.username }, { email: body.email }] });
+      const user = await User.findOne({
+        $or: [{ username: body.username }, { email: body.email }],
+      });
 
       if (!user) {
         throw new AuthenticationError("No User with this email found!");
